@@ -1,3 +1,5 @@
+package main;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,13 +13,13 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         try {
             // Tải giao diện từ file main.fxml
-            Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/FXML/BaseScene.fxml"));
 
             // Tạo Scene và thêm giao diện vào Scene
-            Scene scene = new Scene(root, 300, 200);
+            Scene scene = new Scene(root, 1100, 650);
 
             // Thiết lập Stage (cửa sổ)
-            primaryStage.setTitle("Hello World App");
+            primaryStage.setTitle("EVdictionary");
             primaryStage.setScene(scene);
 
             // Hiển thị cửa sổ
