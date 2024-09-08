@@ -1,5 +1,7 @@
 package main;
 
+import java.io.IOException;
+
 public class Main
 {
     private static final int EXIT=0;
@@ -13,22 +15,28 @@ public class Main
         System.out.print("Enter an option (0 - 10): ");
     }
 
-    public static void handleOptions(int option)
+    public static void handleOptions(int option) throws IOException
     {
         switch (option)
         {
             case EXIT -> OptionManagement.exitApp();
             case TRANSLATE -> OptionManagement.translateWord();
-            default -> System.out.println("Invalid option, please enter an option in range 0 to 10");
+            default ->
+            {
+                System.out.println("Invalid option, please enter an option in range 0 to 10");
+                OptionManagement.pressEnterToContinue();
+            }
         }
     }
 
-    public static void main(String[] args)
+    public static void main(String[] args) throws IOException
     {
-        displayOptions();
         int option;
-        option=Reader.readInt();
-        Reader.readLine(); //skip \n symbol when read integer
-        handleOptions(option);
+        do {
+            displayOptions();
+            option=Reader.readInt();
+            Reader.readLine(); //skip \n symbol when read an integer
+            handleOptions(option);
+        } while (option!=0);
     }
 }

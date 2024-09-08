@@ -13,6 +13,6 @@ public class Reader
 
     public static String readLine()
     {
-        return sc.nextLine();
+        return sc.nextLine().trim();
     }
 }
