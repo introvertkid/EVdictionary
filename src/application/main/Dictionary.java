@@ -10,4 +10,9 @@ public class Dictionary
     {
         this.dictionary=new ArrayList<>();
     }
+
+    public void add(Word word)
+    {
+        dictionary.add(word);
+    }
 }
