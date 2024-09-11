@@ -6,12 +6,14 @@ public class Main
 {
     private static final int EXIT=0;
     private static final int TRANSLATE=1;
+    private static final int REMOVE=2;
 
     public static void displayOptions()
     {
         System.out.println("Welcome to my English - Vietnamese Dictionary App");
         System.out.println("[0] = Exit");
         System.out.println("[1] = Google Translate");
+        System.out.println("[2] = Remove words from dictionary database");
         System.out.print("Enter an option (0 - 10): ");
     }
 
@@ -21,6 +23,7 @@ public class Main
         {
             case EXIT -> OptionManagement.exitApp();
             case TRANSLATE -> OptionManagement.translateWord();
+            case REMOVE -> OptionManagement.removeWordsFromCLI();
             default ->
             {
                 System.out.println("Invalid option, please enter an option in range 0 to 10");
