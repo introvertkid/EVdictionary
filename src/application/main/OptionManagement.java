@@ -1,6 +1,7 @@
 package main;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -9,13 +10,15 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class OptionManagement
 {
     public static Dictionary dictionary=new Dictionary();
 
     //read words from txt file
-    public static void readWordfromFile()
+    public static void readWordFromFile()
     {
         Path path = Path.of("src/resources/DictionaryDatabase/Vocabulary.txt");
 
@@ -28,6 +31,8 @@ public class OptionManagement
                 dictionary.add(new Word(thisWord[0], thisWord[1]));
             }
             //todo: sort dictionary ?
+            Collections.sort(dictionary.dictionary, Comparator.comparing(Word::getTarget));
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -103,15 +108,35 @@ public class OptionManagement
     //TODO: This function does not sort the dictionary after added words
     public static void addWord()
     {
-        System.out.println("Enter the number of words you want to add: ");
-        int addSize = Reader.readInt();
-        Reader.readLine();
+        Path path = Path.of("src/resources/DictionaryDatabase/Vocabulary.txt");
+        int addSize = 0;
 
-        for(int i=0; i < addSize; i++) {
+        // Loop to ensure valid input for the number of words to add
+        while (true) {
+            try {
+                System.out.println("Enter the number of words you want to add: ");
+                addSize = Reader.readInt();  // Read integer input using Reader.readInt()
+                Reader.readLine();  // Consume the leftover newline after reading the int
+                if (addSize > 0) 
+                {
+                    break;  // Exit the loop if a valid number is entered
+                }
+                else
+                {
+                    System.out.println("Please enter a positive number.");
+                }
+            } catch (Exception e) {
+                System.out.println("Invalid input. Please enter a valid number.");
+                Reader.readLine();  // Clear the invalid input from the scanner buffer
+            }
+        }
+
+        readWordFromFile();
+        for (int i = 0; i < addSize; i++) {
             System.out.println("Enter the words and their translation (separated by tab): ");
             String input = Reader.readLine();
             String[] target;
-            if(input.contains("\t"))
+            if (input.contains("\t")) 
             {
                 target = input.split("\t");
             }
@@ -122,10 +147,21 @@ public class OptionManagement
                 continue;
             }
 
-            if(target.length == 2)
+            // Check if the word already exists in the dictionary
+            boolean wordExists = dictionary.dictionary.stream()
+                    .anyMatch(word -> word.getTarget().equalsIgnoreCase(target[0]));
+
+            if (wordExists)
+            {
+                System.out.println("The word '" + target[0] + "' is already in the dictionary. Continue to the next iteration");
+                continue;  // Skip adding this word and continue to the next iteration
+            }
+
+            if (target.length == 2) 
             {
                 Word newWord = new Word(target[0], target[1]);
                 dictionary.add(newWord);
+                System.out.println("Word added successfully");
             }
             else
             {
@@ -133,6 +169,16 @@ public class OptionManagement
                 i--;
             }
         }
-//        Collections.sort(dictionary);
+        //Collections.sort()
+        Collections.sort(dictionary.dictionary, Comparator.comparing(Word::getTarget));
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(String.valueOf(path)))) {
+            for (Word word : dictionary.dictionary) {
+                writer.write(word.getTarget() + "\t" + word.getExplain());
+                writer.newLine();
+            }
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

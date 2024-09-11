@@ -1,1 +1,13 @@
-goodbye	tam biet
+apple	quả táo
+bee	con ong
+blue	màu lam
+bycicle	xe đạp
+cat	con mèo
+chicken	con gà
+circle	hình tròn
+dog	con chó
+green	màu lục
+purple	màu tím
+red	màu đỏ
+square	hình vuông
+yellow	màu vàng
