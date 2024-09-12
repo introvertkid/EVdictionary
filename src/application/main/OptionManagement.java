@@ -20,7 +20,7 @@ public class OptionManagement
     //read words from txt file
     public static void readWordFromFile()
     {
-        Path path = Path.of("src/resources/DictionaryDatabase/Vocabulary.txt");
+        Path path = Path.of("src/resources/DictionaryDatabase/test.txt");
 
         try (BufferedReader br = new BufferedReader(new FileReader(String.valueOf(path))))
         {
@@ -30,7 +30,6 @@ public class OptionManagement
                 String thisWord[] = line.split("\t");
                 dictionary.add(new Word(thisWord[0], thisWord[1]));
             }
-            //todo: sort dictionary ?
             Collections.sort(dictionary.dictionary, Comparator.comparing(Word::getTarget));
 
         } catch (IOException e) {
@@ -46,7 +45,7 @@ public class OptionManagement
         int removeSize = Reader.readInt();
         Reader.readLine();
         ArrayList<String> wordsToRemove = new ArrayList<>();
-        Path path=Path.of("src/resources/DictionaryDatabase/Vocabulary.txt");
+        Path path=Path.of("src/resources/DictionaryDatabase/test.txt");
 
         System.out.println("Enter " + removeSize + " words you want to remove");
         for(int i = 0; i < removeSize; i++)
@@ -105,31 +104,22 @@ public class OptionManagement
     }
 
     //Option 3: Add word
-    //TODO: This function does not sort the dictionary after added words
     public static void addWord()
     {
-        Path path = Path.of("src/resources/DictionaryDatabase/Vocabulary.txt");
+        Path path = Path.of("src/resources/DictionaryDatabase/test.txt");
         int addSize = 0;
 
         // Loop to ensure valid input for the number of words to add
-        while (true) {
-            try {
-                System.out.println("Enter the number of words you want to add: ");
-                addSize = Reader.readInt();  // Read integer input using Reader.readInt()
-                Reader.readLine();  // Consume the leftover newline after reading the int
-                if (addSize > 0) 
-                {
-                    break;  // Exit the loop if a valid number is entered
-                }
-                else
-                {
-                    System.out.println("Please enter a positive number.");
-                }
-            } catch (Exception e) {
-                System.out.println("Invalid input. Please enter a valid number.");
-                Reader.readLine();  // Clear the invalid input from the scanner buffer
+        do
+        {
+            System.out.print("Enter the number of words you want to add: ");
+            addSize = Reader.readInt();
+            Reader.readLine();
+            if(addSize<0)
+            {
+                System.out.println("Please enter a positive number");
             }
-        }
+        } while(addSize<0);
 
         readWordFromFile();
         for (int i = 0; i < addSize; i++) {
@@ -180,5 +170,6 @@ public class OptionManagement
         }catch (IOException e) {
             e.printStackTrace();
         }
+        pressEnterToContinue();
     }
 }

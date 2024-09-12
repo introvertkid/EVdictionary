@@ -1,0 +1,6 @@
+bye	tam biet
+bye	tam biet
+hello	xin chao
+hello	xin chao
+wind	gio
+wind	gio
