@@ -25,4 +25,8 @@ public class Word
     {
         return this.explain;
     }
+    public  Word getWord()
+{
+    return new Word (this.target,this.explain);
+}
 }

@@ -4,3 +4,5 @@ hello	xin chao
 hello	xin chao
 wind	gio
 wind	gio
+transport	van tai
+transcrip	van ban

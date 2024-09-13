@@ -13,6 +13,7 @@ public class Trie {
             char c = word.charAt(i);
             if (cur.child[c - 'a'] == null) {
                 cur.child[c - 'a'] = new TrieNode();
+
             }
             cur = cur.child[c - 'a'];
         }

@@ -8,17 +8,21 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.Collections;
 import java.util.Comparator;
+
+
+
 
 public class OptionManagement
 {
     public static Dictionary dictionary=new Dictionary();
 
     //read words from txt file
-    public static void readWordFromFile()
+    public static Dictionary readWordFromFile()
     {
         Path path = Path.of("src/resources/DictionaryDatabase/test.txt");
 
@@ -31,10 +35,10 @@ public class OptionManagement
                 dictionary.add(new Word(thisWord[0], thisWord[1]));
             }
             Collections.sort(dictionary.dictionary, Comparator.comparing(Word::getTarget));
-
         } catch (IOException e) {
             e.printStackTrace();
         }
+      return dictionary;
     }
 
     //Option 2: Remove words
@@ -171,5 +175,14 @@ public class OptionManagement
             e.printStackTrace();
         }
         pressEnterToContinue();
+
+    }
+    public static void dictionaryLookup()
+    {
+        System.out.println("Type word to look up");
+        Scanner ip=new Scanner(System.in);
+        String word= ip.next();
+        Main.trie.search(word);
+
     }
 }
