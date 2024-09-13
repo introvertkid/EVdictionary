@@ -20,4 +20,9 @@ public class Dictionary
       Trie searcher=new Trie();
       searcher.search(word);
   }
+
+    public void add(Word word)
+    {
+        dictionary.add(word);
+    }
 }
