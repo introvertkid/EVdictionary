@@ -1,7 +1,5 @@
 package main;
 
-import java.io.IOException;
-
 public class Main
 {
     private static final int EXIT=0;
@@ -10,8 +8,8 @@ public class Main
     private static final int ADD=3;
     private static final int LOOKUP=4;
 
-    private static  Dictionary dictionary=new Dictionary();
-  public static  Trie trie=new Trie();
+    public static  Trie trie=new Trie();
+
     public static void displayOptions()
     {
         System.out.println("Welcome to my English - Vietnamese Dictionary App");
@@ -19,11 +17,11 @@ public class Main
         System.out.println("[1] = Google Translate");
         System.out.println("[2] = Remove words from dictionary database");
         System.out.println("[3] = Add words from CLI into dictionary database");
-        System.out.println("[4] = Search word");
+        System.out.println("[4] = Look up words in database");
         System.out.print("Enter an option (0 - 10): ");
     }
 
-    public static void handleOptions(int option) throws IOException
+    public static void handleOptions(int option)
     {
         switch (option)
         {
@@ -40,18 +38,15 @@ public class Main
         }
     }
 
-    public static void main(String[] args) throws IOException
+    public static void main(String[] args)
     {
-//        DatabaseHelper.connectToDatabase();
-
-        dictionary=OptionManagement.readWordFromFile();
-        Word word=new Word("wind","gios");
-
-        for(int i=0;i<dictionary.dictionary.size();i++)
+        //build trie
+        Dictionary dictionary = OptionManagement.readWordFromFile();
+        for(int i = 0; i< dictionary.dictionary.size(); i++)
         {
             trie.insert(dictionary.dictionary.get(i).getWord());
-
         }
+
         int option;
         do {
             displayOptions();

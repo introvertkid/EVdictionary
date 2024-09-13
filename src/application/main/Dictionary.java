@@ -1,7 +1,6 @@
 package main;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Dictionary
 {
@@ -11,8 +10,6 @@ public class Dictionary
     {
         this.dictionary=new ArrayList<>();
     }
-
-
 
     public void add(Word word)
     {

@@ -20,13 +20,13 @@ public class Word
     {
         return this.target;
     }
-
     public final String getExplain()
     {
         return this.explain;
     }
+
     public  Word getWord()
-{
-    return new Word (this.target,this.explain);
-}
+    {
+        return new Word(this.target,this.explain);
+    }
 }

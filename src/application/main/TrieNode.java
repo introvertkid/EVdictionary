@@ -1,12 +1,13 @@
 package main;
+
 public class TrieNode {
     TrieNode[] child;
-    boolean wordExist;
+    boolean wordExisted;
     String meaning;
+
     public TrieNode()
     {
         child=new TrieNode[26];
-        wordExist=false;
+        wordExisted =false;
     }
-
 }

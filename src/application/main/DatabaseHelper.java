@@ -12,11 +12,10 @@ public class DatabaseHelper
     private static final String USERNAME = "root";
     private static final String PASSWORD = "bindz1403";
 
-    //call only one time when initialize new database
+    //call only once when initialize new database
     public static void initializeDatabase() throws SQLException
     {
-        final String INSERT_INTO = "insert into envi(id, target, definition) "
-                                    + "values(?, ?, ?)";
+        final String INSERT_INTO = "insert into envi(id, target, definition) " + "values(?, ?, ?)";
         Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
         PreparedStatement pStatement = connection.prepareStatement(INSERT_INTO, Statement.RETURN_GENERATED_KEYS);
         Path path = Path.of("src/resources/DictionaryDatabase/out.txt");
@@ -27,7 +26,7 @@ public class DatabaseHelper
             int id=1;
             while((line = br.readLine()) != null)
             {
-                String thisWord[] = line.split("\t");
+                String[] thisWord = line.split("\t");
                 pStatement.setString(1, String.valueOf(id));
                 pStatement.setString(2, thisWord[0]);
                 pStatement.setString(3, thisWord[1]);
@@ -56,7 +55,7 @@ public class DatabaseHelper
         }
     }
 
-    //use to parse data from raw file like out.txt
+    //use only once to parse data from raw data
     public static void htmlParser()
     {
         Path path = Path.of("src/resources/DictionaryDatabase/anhviet138K.txt");

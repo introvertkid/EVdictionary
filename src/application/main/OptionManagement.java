@@ -8,18 +8,23 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Files;
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.Collections;
 import java.util.Comparator;
 
-
-
-
 public class OptionManagement
 {
     public static Dictionary dictionary=new Dictionary();
+
+    //Option 4: Lookup words
+    public static void dictionaryLookup()
+    {
+        System.out.print("Type word to lookup: ");
+        String word= Reader.readLine();
+        Main.trie.search(word);
+        pressEnterToContinue();
+    }
 
     //read words from txt file
     public static Dictionary readWordFromFile()
@@ -31,7 +36,7 @@ public class OptionManagement
             String line;
             while ((line = br.readLine()) != null)
             {
-                String thisWord[] = line.split("\t");
+                String[] thisWord = line.split("\t");
                 dictionary.add(new Word(thisWord[0], thisWord[1]));
             }
             Collections.sort(dictionary.dictionary, Comparator.comparing(Word::getTarget));
@@ -103,7 +108,7 @@ public class OptionManagement
 
     public static void pressEnterToContinue()
     {
-        System.out.println("Please press Enter to continue the program !");
+        System.out.println("---> Please press Enter to continue the program !");
         Reader.readLine();
     }
 
@@ -111,7 +116,7 @@ public class OptionManagement
     public static void addWord()
     {
         Path path = Path.of("src/resources/DictionaryDatabase/test.txt");
-        int addSize = 0;
+        int addSize;
 
         // Loop to ensure valid input for the number of words to add
         do
@@ -175,14 +180,5 @@ public class OptionManagement
             e.printStackTrace();
         }
         pressEnterToContinue();
-
-    }
-    public static void dictionaryLookup()
-    {
-        System.out.println("Type word to look up");
-        Scanner ip=new Scanner(System.in);
-        String word= ip.next();
-        Main.trie.search(word);
-
     }
 }
