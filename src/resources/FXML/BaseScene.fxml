@@ -1,15 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<SplitPane fx:id="background" dividerPositions="0.056, 0.324" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="711.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane fx:id="background" dividerPositions="0.056, 0.324" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
     <items>
         <!-- AnchorPane bên trái -->
         <AnchorPane fx:id="anchorpane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #D3D3D3;">
             <children>
-<!--                <VBox fx:id="left" layoutX="18.4" layoutY="12.0" prefHeight="486.0" prefWidth="30.0" style="-fx-background-color: gray;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="10.0" />-->
+                <ImageView fitHeight="43.0" fitWidth="43.0" layoutX="5.0" layoutY="3.0">
+                    <image>
+                        <Image url="@../image/search.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="user" fitHeight="43.0" fitWidth="43.0" layoutX="6.0" layoutY="567.0" AnchorPane.topAnchor="567.0">
+                    <image>
+                        <Image url="@../image/user3.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="43.0" fitWidth="43.0" layoutX="6.0" layoutY="51.0">
+                    <image>
+                        <Image url="@../image/translate.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="43.0" fitWidth="43.0" layoutX="6.0" layoutY="101.0">
+                    <image>
+                        <Image url="@../image/bookmark.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="43.0" fitWidth="43.0" layoutX="6.0" layoutY="150.0">
+                    <image>
+                        <Image url="@../image/history.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="43.0" fitWidth="43.0" layoutX="6.0" layoutY="511.0">
+                    <image>
+                        <Image url="@../image/setting.png" />
+                    </image>
+                </ImageView>
             </children>
         </AnchorPane>
 
