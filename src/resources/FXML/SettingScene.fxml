@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<SplitPane fx:id="background" dividerPositions="0.056" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+    <items>
+        <!-- AnchorPane bên trái -->
+        <AnchorPane fx:id="anchorpane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #D3D3D3;">
+            <children>
+                <ImageView fx:id="searchButton" fitHeight="43.0" fitWidth="43.0" layoutX="5.0" layoutY="5.0">
+                    <image>
+                        <Image url="@../image/search.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="userButton" fitHeight="43.0" fitWidth="43.0" layoutX="6.0" layoutY="570.0">
+                    <image>
+                        <Image url="@../image/user3.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="translateButton" fitHeight="43.0" fitWidth="43.0" layoutX="6.0" layoutY="53.0">
+                    <image>
+                        <Image url="@../image/translate.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="bookmarkButton" fitHeight="43.0" fitWidth="43.0" layoutX="6.0" layoutY="103.0">
+                    <image>
+                        <Image url="@../image/bookmark.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="historyButton" fitHeight="43.0" fitWidth="43.0" layoutX="6.0" layoutY="150.0">
+                    <image>
+                        <Image url="@../image/history.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="settingButton" fitHeight="43.0" fitWidth="43.0" layoutX="6.0" layoutY="520.0">
+                    <image>
+                        <Image url="@../image/setting.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+
+        <!-- AnchorPane achright với màu nền giống achorpane -->
+        <AnchorPane fx:id="achright" prefHeight="517.0" prefWidth="394.0" style="-fx-background-color: #D3D3D3;">
+            <children>
+                <!-- VBox right với màu nền trắng -->
+                <VBox fx:id="right" layoutX="14.0" layoutY="14.0" prefHeight="486.0" prefWidth="420.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="10.0" />
+            </children>
+        </AnchorPane>
+    </items>
+</SplitPane>

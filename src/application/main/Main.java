@@ -14,14 +14,13 @@ public class Main extends Application
     {
         try {
             Parent root = FXMLLoader.load(this.getClass().getResource("/FXML/BaseScene.fxml"));
-            Scene scene = new Scene(root, 1000.0, 620.0);
+            Scene scene = new Scene(root);
             primaryStage.setTitle("EVdictionary");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public static void main(String[] args) {
