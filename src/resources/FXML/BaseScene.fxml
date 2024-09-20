@@ -12,43 +12,43 @@
         <!-- AnchorPane bên trái -->
         <AnchorPane fx:id="anchorpane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #D3D3D3;">
             <children>
-                <ImageView id="searchButton" fx:id="searchButton" fitHeight="43.0" fitWidth="43.0" layoutX="6.0" layoutY="5.0">
+                <ImageView fx:id="searchButton" fitHeight="43.0" fitWidth="43.0" layoutX="6.0" layoutY="5.0">
                     <image>
                         <Image url="@../image/search.png" />
                     </image>
                 </ImageView>
 
-                <ImageView id="translateButton" fx:id="translatorButton" fitHeight="43.0" fitWidth="43.0" layoutX="6.0" layoutY="53.0">
+                <ImageView fx:id="translatorButton" fitHeight="43.0" fitWidth="43.0" layoutX="6.0" layoutY="53.0">
                     <image>
                         <Image url="@../image/translate.png" />
                     </image>
                 </ImageView>
 
-                <ImageView id="bookmarkButton" fx:id="bookmarkButton" fitHeight="43.0" fitWidth="43.0" layoutX="6.0" layoutY="103.0">
+                <ImageView fx:id="bookmarkButton" fitHeight="43.0" fitWidth="43.0" layoutX="6.0" layoutY="103.0">
                     <image>
                         <Image url="@../image/bookmark.png" />
                     </image>
                 </ImageView>
 
-                <ImageView id="historyButton" fx:id="historyButton" fitHeight="43.0" fitWidth="43.0" layoutX="6.0" layoutY="150.0">
+                <ImageView fx:id="historyButton" fitHeight="43.0" fitWidth="43.0" layoutX="6.0" layoutY="150.0">
                     <image>
                         <Image url="@../image/history.png" />
                     </image>
                 </ImageView>
 
-                <VBox layoutX="5" layoutY="520.0" spacing="5">
-                    <ImageView fx:id="settingButton" fitHeight="43.0" fitWidth="43.0" layoutX="6.0" layoutY="520.0" onMouseClicked="#showSettingScene">
+<!--                <VBox layoutX="5" layoutY="520.0" spacing="5">-->
+                    <ImageView fx:id="settingButton" fitHeight="43.0" fitWidth="43.0" layoutX="6.0" layoutY="520.0" onMouseClicked="#showSettingScene" pickOnBounds="true">
                         <image>
                             <Image url="@../image/setting.png" />
                         </image>
                     </ImageView>
 
-                    <ImageView id="userButton" fx:id="userButton" fitHeight="43.0" fitWidth="43.0" layoutX="6.0" layoutY="570.0">
+                    <ImageView fx:id="userButton" fitHeight="43.0" fitWidth="43.0" layoutX="6.0" layoutY="570.0">
                         <image>
                             <Image url="@../image/user3.png" />
                         </image>
                     </ImageView>
-                </VBox>
+<!--                </VBox>-->
             </children>
         </AnchorPane>
 
