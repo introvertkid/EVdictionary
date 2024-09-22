@@ -15,4 +15,14 @@ public class Dictionary
     {
         dictionary.add(word);
     }
+
+    public int getSize()
+    {
+        return dictionary.size();
+    }
+
+    public Word get(int i)
+    {
+        return dictionary.get(i);
+    }
 }

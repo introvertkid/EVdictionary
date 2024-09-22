@@ -7,8 +7,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -20,18 +20,25 @@ public class Controller implements Initializable {
     private ListView<String>myListView;
 
     @FXML
-    private ImageView settingButton;
+    private WebView myWebView;
 
     private Parent root;
     private Scene scene;
     private Stage primaryStage;
 
-    String[] food={"pizza", "kfc", "ramen"};
-
     @Override
-    public void initialize(URL arg0, ResourceBundle arg1)
+    public void initialize(URL url, ResourceBundle resourceBundle)
     {
-        myListView.getItems().addAll(food);
+        Dictionary words=Main.dictionary;
+        for(int i=0;i<words.getSize();i++)
+        {
+            Word currentWord=words.get(i);
+            String target=currentWord.getTarget();
+            String definition=currentWord.getExplain();
+            myListView.getItems().add(target);
+        }
+        String test="<html><i>-manship</i><br/><ul><li><font color='#cc0000'><b> hình thái ghép có nghĩa tài nghệ</b></font></li></ul></html>";
+        myWebView.getEngine().loadContent(test);
     }
 
     @FXML
@@ -44,21 +51,24 @@ public class Controller implements Initializable {
         primaryStage.show();
     }
 
-    private Object loadFXML(String name)
+    public Object loadFXML(String name)
     {
         String url="/FXML/" + name + ".fxml";
-        Object temp=new Object();
+        Object obj=new Object();
         try{
-            temp=FXMLLoader.load(this.getClass().getResource(url));
+            obj=FXMLLoader.load(this.getClass().getResource(url));
         }
         catch (IOException e){
             e.printStackTrace();
         }
-        return temp;
+        return obj;
     }
 
-    private static Stage loadCurrentStage(MouseEvent mouseEvent)
+    public static Stage loadCurrentStage(MouseEvent mouseEvent)
     {
+        System.out.println(mouseEvent.getSource());
+        System.out.println(((Node) mouseEvent.getSource()).getScene());
+        System.out.println(((Node)mouseEvent.getSource()).getScene().getWindow());
         return (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
     }
 }

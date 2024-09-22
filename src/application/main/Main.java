@@ -9,9 +9,15 @@ import javafx.stage.Stage;
 
 public class Main extends Application
 {
+    public  static Dictionary dictionary = new Dictionary();
+
     @Override
     public void start(Stage primaryStage)
     {
+        DatabaseHelper.connectToDatabase();
+        OptionManagement.readWordFromFile(dictionary);
+        System.out.println(dictionary.getSize());
+
         try {
             Parent root = FXMLLoader.load(this.getClass().getResource("/FXML/BaseScene.fxml"));
             Scene scene = new Scene(root);

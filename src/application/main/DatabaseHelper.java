@@ -12,11 +12,13 @@ public class DatabaseHelper
     private static final String USERNAME = "root";
     private static final String PASSWORD = "bindz1403";
 
+    private static Connection connection;
+
     //call only once when initialize new database
     public static void initializeDatabase() throws SQLException
     {
         final String INSERT_INTO = "insert into envi(id, target, definition) " + "values(?, ?, ?)";
-        Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+//        Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
         PreparedStatement pStatement = connection.prepareStatement(INSERT_INTO, Statement.RETURN_GENERATED_KEYS);
         Path path = Path.of("src/resources/DictionaryDatabase/out.txt");
 
@@ -44,10 +46,10 @@ public class DatabaseHelper
     {
         try
         {
-            Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             System.out.println("Connect to database successfully");
 //            initializeDatabase();
-            conn.close();
+//            conn.close();
         }
         catch (SQLException e)
         {
