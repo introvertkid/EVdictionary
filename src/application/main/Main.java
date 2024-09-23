@@ -1,5 +1,7 @@
 package main;
 
+import java.sql.SQLException;
+
 public class Main
 {
     private static final int EXIT=0;
@@ -8,7 +10,7 @@ public class Main
     private static final int ADD=3;
     private static final int LOOKUP=4;
 
-    public static  Trie trie=new Trie();
+    public static Trie trie=new Trie();
 
     public static void displayOptions()
     {
@@ -38,8 +40,8 @@ public class Main
         }
     }
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws SQLException {
+        DatabaseHelper.connectToDatabase();
         //build trie
         Dictionary dictionary = OptionManagement.readWordFromFile();
         for(int i = 0; i< dictionary.dictionary.size(); i++)

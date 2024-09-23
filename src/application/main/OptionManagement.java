@@ -21,8 +21,25 @@ public class OptionManagement
     public static void dictionaryLookup()
     {
         System.out.print("Type word to lookup: ");
-        String word= Reader.readLine();
-        Main.trie.search(word);
+        String target = Reader.readLine();
+
+        TrieNode currentNodeInTrie = Main.trie.search(target);
+        String definition = currentNodeInTrie.meaning;
+
+        if(definition == null)
+        {
+            System.out.println("The word '" + target + "' is not found !");
+            System.out.println("Do you want to see our suggestions (Y/N)? ");
+            String choice = Reader.readLine();
+            if(choice.equals("Y"))
+            {
+                Trie.wordSatisfied(target, currentNodeInTrie);
+            }
+        }
+        else
+        {
+            System.out.println(target + " = " + definition);
+        }
         pressEnterToContinue();
     }
 
@@ -135,7 +152,7 @@ public class OptionManagement
             System.out.println("Enter the words and their translation (separated by tab): ");
             String input = Reader.readLine();
             String[] target;
-            if (input.contains("\t")) 
+            if (input.contains("\t"))
             {
                 target = input.split("\t");
             }
@@ -156,7 +173,7 @@ public class OptionManagement
                 continue;  // Skip adding this word and continue to the next iteration
             }
 
-            if (target.length == 2) 
+            if (target.length == 2)
             {
                 Word newWord = new Word(target[0], target[1]);
                 dictionary.add(newWord);
