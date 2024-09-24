@@ -15,15 +15,13 @@ import java.util.Comparator;
 
 public class OptionManagement
 {
-    public static Dictionary dictionary=new Dictionary();
-
     //Option 4: Lookup words
-    public static void dictionaryLookup()
+    public static void dictionaryLookup(Trie trie)
     {
         System.out.print("Type word to lookup: ");
         String target = Reader.readLine();
 
-        TrieNode currentNodeInTrie = Main.trie.search(target);
+        TrieNode currentNodeInTrie = trie.search(target);
         String definition = currentNodeInTrie.meaning;
 
         if(definition == null)
@@ -44,7 +42,7 @@ public class OptionManagement
     }
 
     //read words from txt file
-    public static Dictionary readWordFromFile()
+    public static Dictionary readWordFromFile(Dictionary dictionary)
     {
         Path path = Path.of("src/resources/DictionaryDatabase/test.txt");
 
@@ -130,7 +128,7 @@ public class OptionManagement
     }
 
     //Option 3: Add word
-    public static void addWord()
+    public static void addWord(Dictionary dictionary)
     {
         Path path = Path.of("src/resources/DictionaryDatabase/test.txt");
         int addSize;
@@ -147,7 +145,7 @@ public class OptionManagement
             }
         } while(addSize<0);
 
-        readWordFromFile();
+        readWordFromFile(dictionary);
         for (int i = 0; i < addSize; i++) {
             System.out.println("Enter the words and their translation (separated by tab): ");
             String input = Reader.readLine();

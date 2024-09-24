@@ -9,14 +9,13 @@ import javafx.stage.Stage;
 
 public class Main extends Application
 {
-    public  static Dictionary dictionary = new Dictionary();
+    public static Dictionary dictionary = new Dictionary();
+    public static Trie trie = new Trie();
 
     @Override
     public void start(Stage primaryStage)
     {
-        DatabaseHelper.connectToDatabase();
-        OptionManagement.readWordFromFile(dictionary);
-        System.out.println(dictionary.getSize());
+        initializeEverything();
 
         try {
             Parent root = FXMLLoader.load(this.getClass().getResource("/FXML/BaseScene.fxml"));
@@ -26,6 +25,16 @@ public class Main extends Application
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private static void initializeEverything()
+    {
+        DatabaseHelper.connectToDatabase();
+        OptionManagement.readWordFromFile(dictionary);
+        for(int i = 0; i < dictionary.getSize(); i++)
+        {
+            trie.insert(dictionary.get(i));
         }
     }
 

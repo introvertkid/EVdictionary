@@ -9,7 +9,7 @@ public class Trie {
 
     public void insert(Word dummie) {
         TrieNode cur = firstChar;
-        String word=dummie.getTarget();
+        String word = dummie.getTarget();
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
             if (cur.child[c - 'a'] == null) {
@@ -18,7 +18,7 @@ public class Trie {
             cur = cur.child[c - 'a'];
         }
         cur.wordExisted = true;
-        cur.meaning=dummie.getExplain();
+        cur.meaning = dummie.getExplain();
     }
 
     public TrieNode search(String word)

@@ -62,7 +62,7 @@
                 <!-- VBox mbot với màu nền xám (gray) -->
                 <VBox fx:id="mbot" layoutX="16.8" layoutY="52.8" prefHeight="453.0" prefWidth="160.0" style="-fx-background-color: gray;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="53.0">
                    <children>
-                      <ListView fx:id="myListView" prefHeight="559.0" prefWidth="255.0" />
+                      <ListView fx:id="targetList" prefHeight="559.0" prefWidth="255.0" />
                    </children>
                 </VBox>
             </children>

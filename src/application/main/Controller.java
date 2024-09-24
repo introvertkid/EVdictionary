@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
     @FXML
-    private ListView<String>myListView;
+    private ListView<String> targetList;
 
     @FXML
     private WebView myWebView;
@@ -29,36 +29,36 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
-        Dictionary words=Main.dictionary;
-        for(int i=0;i<words.getSize();i++)
+        Dictionary words = Main.dictionary;
+        for (int i = 0; i < words.getSize(); i++)
         {
-            Word currentWord=words.get(i);
-            String target=currentWord.getTarget();
-            String definition=currentWord.getExplain();
-            myListView.getItems().add(target);
+            targetList.getItems().add(words.get(i).getTarget());
         }
-        String test="<html><i>-manship</i><br/><ul><li><font color='#cc0000'><b> hình thái ghép có nghĩa tài nghệ</b></font></li></ul></html>";
-        myWebView.getEngine().loadContent(test);
+        //add listener to targetList for loading definition
+        targetList.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) ->
+        {
+            String definition = Main.trie.search(newValue).meaning;
+            myWebView.getEngine().loadContent(definition);
+        });
     }
 
     @FXML
     public void showSettingScene(MouseEvent mouseEvent)
     {
-        root= (Parent) loadFXML("SettingScene");
-        primaryStage=loadCurrentStage(mouseEvent);
-        scene=new Scene(root);
+        root = (Parent) loadFXML("SettingScene");
+        primaryStage = loadCurrentStage(mouseEvent);
+        scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
     public Object loadFXML(String name)
     {
-        String url="/FXML/" + name + ".fxml";
-        Object obj=new Object();
-        try{
-            obj=FXMLLoader.load(this.getClass().getResource(url));
-        }
-        catch (IOException e){
+        String url = "/FXML/" + name + ".fxml";
+        Object obj = new Object();
+        try {
+            obj = FXMLLoader.load(this.getClass().getResource(url));
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return obj;
@@ -66,9 +66,6 @@ public class Controller implements Initializable {
 
     public static Stage loadCurrentStage(MouseEvent mouseEvent)
     {
-        System.out.println(mouseEvent.getSource());
-        System.out.println(((Node) mouseEvent.getSource()).getScene());
-        System.out.println(((Node)mouseEvent.getSource()).getScene().getWindow());
-        return (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
+        return (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
     }
 }
