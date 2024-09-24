@@ -1,7 +1,7 @@
 package main;
 
 public class Trie {
-   final private TrieNode firstChar;
+    final private TrieNode firstChar;
 
     public Trie() {
         firstChar = new TrieNode();
@@ -14,7 +14,6 @@ public class Trie {
             char c = word.charAt(i);
             if (cur.child[c - 'a'] == null) {
                 cur.child[c - 'a'] = new TrieNode();
-
             }
             cur = cur.child[c - 'a'];
         }
@@ -22,26 +21,20 @@ public class Trie {
         cur.meaning=dummie.getExplain();
     }
 
-    public void search(String word)
+    public TrieNode search(String word)
     {
         TrieNode cur = firstChar;
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
             if (cur.child[c - 'a'] == null) {
-                System.out.println(word + " not found!!");
-                return;
+                return null;
             }
             cur = cur.child[c - 'a'];
         }
-        if (cur.wordExisted) {
-            System.out.println(word + " "+cur.meaning);
-        } else {
-            System.out.println(word + " not found\n---> Suggestions:");
-            wordSatisfied(word, cur);
-        }
+        return cur;
     }
 
-    public void wordSatisfied(String word, main.TrieNode cur) {
+    public static void wordSatisfied(String word, main.TrieNode cur) {
         if (cur.wordExisted) {
             System.out.println(word + " "+cur.meaning);
         }

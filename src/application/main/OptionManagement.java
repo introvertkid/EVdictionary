@@ -15,17 +15,36 @@ import java.util.Comparator;
 
 public class OptionManagement
 {
+    public static Dictionary dictionary=new Dictionary();
+
     //Option 4: Lookup words
     public static void dictionaryLookup()
     {
         System.out.print("Type word to lookup: ");
-        String word= Reader.readLine();
-//        Main.trie.search(word);
+        String target = Reader.readLine();
+
+        TrieNode currentNodeInTrie = Main.trie.search(target);
+        String definition = currentNodeInTrie.meaning;
+
+        if(definition == null)
+        {
+            System.out.println("The word '" + target + "' is not found !");
+            System.out.println("Do you want to see our suggestions (Y/N)? ");
+            String choice = Reader.readLine();
+            if(choice.equals("Y"))
+            {
+                Trie.wordSatisfied(target, currentNodeInTrie);
+            }
+        }
+        else
+        {
+            System.out.println(target + " = " + definition);
+        }
         pressEnterToContinue();
     }
 
     //read words from txt file
-    public static void readWordFromFile(Dictionary dictionary)
+    public static Dictionary readWordFromFile()
     {
         Path path = Path.of("src/resources/DictionaryDatabase/test.txt");
 
@@ -41,6 +60,7 @@ public class OptionManagement
         } catch (IOException e) {
             e.printStackTrace();
         }
+      return dictionary;
     }
 
     //Option 2: Remove words
@@ -110,7 +130,7 @@ public class OptionManagement
     }
 
     //Option 3: Add word
-    public static void addWord(Dictionary dictionary)
+    public static void addWord()
     {
         Path path = Path.of("src/resources/DictionaryDatabase/test.txt");
         int addSize;
@@ -127,12 +147,12 @@ public class OptionManagement
             }
         } while(addSize<0);
 
-        readWordFromFile(dictionary);
+        readWordFromFile();
         for (int i = 0; i < addSize; i++) {
             System.out.println("Enter the words and their translation (separated by tab): ");
             String input = Reader.readLine();
             String[] target;
-            if (input.contains("\t")) 
+            if (input.contains("\t"))
             {
                 target = input.split("\t");
             }
@@ -153,7 +173,7 @@ public class OptionManagement
                 continue;  // Skip adding this word and continue to the next iteration
             }
 
-            if (target.length == 2) 
+            if (target.length == 2)
             {
                 Word newWord = new Word(target[0], target[1]);
                 dictionary.add(newWord);
