@@ -9,12 +9,14 @@ public class Trie {
 
     public void insert(Word dummie) {
         TrieNode cur = firstChar;
-        String word=dummie.getTarget();
+        String word=dummie.getTarget().toLowerCase();
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
+            if (c < 'a' || c > 'z') {
+                continue;
+            }
             if (cur.child[c - 'a'] == null) {
                 cur.child[c - 'a'] = new TrieNode();
-
             }
             cur = cur.child[c - 'a'];
         }
