@@ -71,4 +71,24 @@ public class Controller implements Initializable {
         System.out.println(((Node)mouseEvent.getSource()).getScene().getWindow());
         return (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
     }
+
+    @FXML
+    public void showBookmarkScene(MouseEvent mouseEvent)
+    {
+        root= (Parent) loadFXML("BookmarkScene");
+        primaryStage=loadCurrentStage(mouseEvent);
+        scene=new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    @FXML
+    public void showBaseScene(MouseEvent mouseEvent)
+    {
+        root= (Parent) loadFXML("BaseScene");
+        primaryStage=loadCurrentStage(mouseEvent);
+        scene=new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
 }

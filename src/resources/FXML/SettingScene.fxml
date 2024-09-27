@@ -6,12 +6,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<SplitPane fx:id="background" dividerPositions="0.056" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane fx:id="background" dividerPositions="0.056" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller">
     <items>
         <!-- AnchorPane bên trái -->
         <AnchorPane fx:id="anchorpane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #D3D3D3;">
             <children>
-                <ImageView fx:id="searchButton" fitHeight="43.0" fitWidth="43.0" layoutX="5.0" layoutY="5.0">
+                <ImageView fx:id="searchButton" fitHeight="43.0" fitWidth="43.0" layoutX="5.0" layoutY="5.0" onMouseClicked="#showBaseScene" pickOnBounds="true">
                     <image>
                         <Image url="@../image/search.png" />
                     </image>
@@ -26,7 +26,7 @@
                         <Image url="@../image/translate.png" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="bookmarkButton" fitHeight="43.0" fitWidth="43.0" layoutX="6.0" layoutY="103.0">
+                <ImageView fx:id="bookmarkButton" fitHeight="43.0" fitWidth="43.0" layoutX="6.0" layoutY="103.0" onMouseClicked="#showBookmarkScene" pickOnBounds="true">
                     <image>
                         <Image url="@../image/bookmark.png" />
                     </image>

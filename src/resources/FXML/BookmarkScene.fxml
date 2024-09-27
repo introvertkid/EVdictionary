@@ -13,7 +13,7 @@
         <!-- AnchorPane bên trái -->
         <AnchorPane fx:id="anchorpane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #D3D3D3;">
             <children>
-                <ImageView fx:id="searchButton" fitHeight="43.0" fitWidth="43.0" layoutX="6.0" layoutY="5.0">
+                <ImageView fx:id="searchButton" fitHeight="43.0" fitWidth="43.0" layoutX="6.0" layoutY="5.0" onMouseClicked="#showBaseScene" pickOnBounds="true">
                     <image>
                         <Image url="@../image/search.png" />
                     </image>
@@ -25,7 +25,7 @@
                     </image>
                 </ImageView>
 
-                <ImageView fx:id="bookmarkButton" fitHeight="43.0" fitWidth="43.0" layoutX="6.0" layoutY="103.0" onMouseClicked="#showBookmarkScene" pickOnBounds="true">
+                <ImageView fx:id="bookmarkButton" fitHeight="43.0" fitWidth="43.0" layoutX="6.0" layoutY="103.0">
                     <image>
                         <Image url="@../image/bookmark.png" />
                     </image>
